@@ -1,18 +1,51 @@
 ﻿using System;
+using System.Drawing;
+
 public class ClassRoom 
 {
-    Pupil[] pupils;
+    Pupil[]pupils;
     public ClassRoom (params Pupil[] pu)
     {
-       for (int i = 0; i < pu.Length; i++)
+        this.pupils = new Pupil[pu.Length];
+        for (int i = 0; i < pu.Length; i++)
         {
             pupils[i] = pu[i];
         }
 
     }
+    public void printStudy()
+    {
+        foreach (var pupil in pupils)
+        {
+            pupil.Study();
+        }
+
+    }
+    public void printRead()
+    {
+        for (int i = 0; i < pupils.Length; i++)
+        {
+            pupils[i].Read();
+        }
+
+    }
+    public  void printWrite()
+    {
+        for (int i = 0; i < pupils.Length; i++)
+        {
+            pupils[i].Write();
+        }
+    }
+    public void printRelax()
+    {
+        for (int i = 0; i < pupils.Length; i++)
+        {
+            pupils[i].Relax();
+        }
+    }
 }
 
-class EclselentPupil : Pupil
+class ExcelentPupil : Pupil
 {
     public override void Study() 
     {
@@ -95,11 +128,20 @@ namespace ConsoleApp1
             ExcelentPupil a = new ExcelentPupil();
             GoodPupil b = new GoodPupil();
             BadPupil c = new BadPupil();
+            Pupil  [] ar1= {a, b,c};
+            Pupil[] ar2 = {a, b};
 
-            ClassRoom class1 = new ClassRoom(a, b, c, c);
-            ClassRoom class2 = new ClassRoom(a, b);
+            ClassRoom class1 = new ClassRoom(ar1);
+            ClassRoom class2 = new ClassRoom(ar2);
+            class1.printRead();
+            class1.printRelax();
+            class1.printStudy();
+            class1.printWrite();
+            class2.printRead();
+            class2.printRelax();
+            class2.printStudy();
+            class2.printWrite();
             Console.Read();
         }
     }
-
-
+}
