@@ -119,7 +119,7 @@ public abstract class Pupil
 
 
 
-namespace ConsoleApp1
+namespace part1
 {
     class Program
     {
